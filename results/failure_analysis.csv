@@ -1,0 +1,109 @@
+split,analysis,bucket,edges,method,recall@50
+random_seed0,technique popularity,unseen (0 groups),24,popularity,0.0000
+random_seed0,technique popularity,unseen (0 groups),24,three_hop_paths,0.0000
+random_seed0,technique popularity,unseen (0 groups),24,similar_groups,0.0000
+random_seed0,technique popularity,unseen (0 groups),24,deepwalk_cosine,0.0833
+random_seed0,technique popularity,rare (1-2),72,popularity,0.0000
+random_seed0,technique popularity,rare (1-2),72,three_hop_paths,0.0000
+random_seed0,technique popularity,rare (1-2),72,similar_groups,0.0000
+random_seed0,technique popularity,rare (1-2),72,deepwalk_cosine,0.2361
+random_seed0,technique popularity,medium (3-9),184,popularity,0.0000
+random_seed0,technique popularity,medium (3-9),184,three_hop_paths,0.0000
+random_seed0,technique popularity,medium (3-9),184,similar_groups,0.0000
+random_seed0,technique popularity,medium (3-9),184,deepwalk_cosine,0.1522
+random_seed0,technique popularity,common (10+),683,popularity,0.7833
+random_seed0,technique popularity,common (10+),683,three_hop_paths,0.7921
+random_seed0,technique popularity,common (10+),683,similar_groups,0.7936
+random_seed0,technique popularity,common (10+),683,deepwalk_cosine,0.5930
+random_seed0,technique popularity,all edges,963,popularity,0.5556
+random_seed0,technique popularity,all edges,963,three_hop_paths,0.5618
+random_seed0,technique popularity,all edges,963,similar_groups,0.5628
+random_seed0,technique popularity,all edges,963,deepwalk_cosine,0.4694
+random_seed0,group size,small (<10),77,popularity,0.5974
+random_seed0,group size,small (<10),77,three_hop_paths,0.6234
+random_seed0,group size,small (<10),77,similar_groups,0.6494
+random_seed0,group size,small (<10),77,deepwalk_cosine,0.5065
+random_seed0,group size,medium (10-29),274,popularity,0.6496
+random_seed0,group size,medium (10-29),274,three_hop_paths,0.6679
+random_seed0,group size,medium (10-29),274,similar_groups,0.6606
+random_seed0,group size,medium (10-29),274,deepwalk_cosine,0.5328
+random_seed0,group size,large (30+),612,popularity,0.5082
+random_seed0,group size,large (30+),612,three_hop_paths,0.5065
+random_seed0,group size,large (30+),612,similar_groups,0.5082
+random_seed0,group size,large (30+),612,deepwalk_cosine,0.4363
+random_seed0,group size,all edges,963,popularity,0.5556
+random_seed0,group size,all edges,963,three_hop_paths,0.5618
+random_seed0,group size,all edges,963,similar_groups,0.5628
+random_seed0,group size,all edges,963,deepwalk_cosine,0.4694
+time_2023,technique popularity,unseen (0 groups),34,popularity,0.0000
+time_2023,technique popularity,unseen (0 groups),34,three_hop_paths,0.0000
+time_2023,technique popularity,unseen (0 groups),34,similar_groups,0.0000
+time_2023,technique popularity,unseen (0 groups),34,deepwalk_cosine,0.0000
+time_2023,technique popularity,rare (1-2),127,popularity,0.0000
+time_2023,technique popularity,rare (1-2),127,three_hop_paths,0.0079
+time_2023,technique popularity,rare (1-2),127,similar_groups,0.0079
+time_2023,technique popularity,rare (1-2),127,deepwalk_cosine,0.1181
+time_2023,technique popularity,medium (3-9),135,popularity,0.0074
+time_2023,technique popularity,medium (3-9),135,three_hop_paths,0.0148
+time_2023,technique popularity,medium (3-9),135,similar_groups,0.0074
+time_2023,technique popularity,medium (3-9),135,deepwalk_cosine,0.1556
+time_2023,technique popularity,common (10+),238,popularity,0.7689
+time_2023,technique popularity,common (10+),238,three_hop_paths,0.7059
+time_2023,technique popularity,common (10+),238,similar_groups,0.7101
+time_2023,technique popularity,common (10+),238,deepwalk_cosine,0.4370
+time_2023,technique popularity,all edges,534,popularity,0.3446
+time_2023,technique popularity,all edges,534,three_hop_paths,0.3202
+time_2023,technique popularity,all edges,534,similar_groups,0.3202
+time_2023,technique popularity,all edges,534,deepwalk_cosine,0.2622
+time_2023,group size,small (<10),174,popularity,0.3333
+time_2023,group size,small (<10),174,three_hop_paths,0.2414
+time_2023,group size,small (<10),174,similar_groups,0.2356
+time_2023,group size,small (<10),174,deepwalk_cosine,0.2816
+time_2023,group size,medium (10-29),53,popularity,0.4528
+time_2023,group size,medium (10-29),53,three_hop_paths,0.4906
+time_2023,group size,medium (10-29),53,similar_groups,0.4717
+time_2023,group size,medium (10-29),53,deepwalk_cosine,0.2642
+time_2023,group size,large (30+),307,popularity,0.3322
+time_2023,group size,large (30+),307,three_hop_paths,0.3355
+time_2023,group size,large (30+),307,similar_groups,0.3420
+time_2023,group size,large (30+),307,deepwalk_cosine,0.2508
+time_2023,group size,all edges,534,popularity,0.3446
+time_2023,group size,all edges,534,three_hop_paths,0.3202
+time_2023,group size,all edges,534,similar_groups,0.3202
+time_2023,group size,all edges,534,deepwalk_cosine,0.2622
+time_2024,technique popularity,unseen (0 groups),20,popularity,0.0000
+time_2024,technique popularity,unseen (0 groups),20,three_hop_paths,0.0000
+time_2024,technique popularity,unseen (0 groups),20,similar_groups,0.0000
+time_2024,technique popularity,unseen (0 groups),20,deepwalk_cosine,0.0000
+time_2024,technique popularity,rare (1-2),47,popularity,0.0000
+time_2024,technique popularity,rare (1-2),47,three_hop_paths,0.0000
+time_2024,technique popularity,rare (1-2),47,similar_groups,0.0000
+time_2024,technique popularity,rare (1-2),47,deepwalk_cosine,0.0851
+time_2024,technique popularity,medium (3-9),87,popularity,0.0000
+time_2024,technique popularity,medium (3-9),87,three_hop_paths,0.0115
+time_2024,technique popularity,medium (3-9),87,similar_groups,0.0115
+time_2024,technique popularity,medium (3-9),87,deepwalk_cosine,0.1034
+time_2024,technique popularity,common (10+),148,popularity,0.7162
+time_2024,technique popularity,common (10+),148,three_hop_paths,0.6351
+time_2024,technique popularity,common (10+),148,similar_groups,0.6554
+time_2024,technique popularity,common (10+),148,deepwalk_cosine,0.4662
+time_2024,technique popularity,all edges,302,popularity,0.3510
+time_2024,technique popularity,all edges,302,three_hop_paths,0.3146
+time_2024,technique popularity,all edges,302,similar_groups,0.3245
+time_2024,technique popularity,all edges,302,deepwalk_cosine,0.2715
+time_2024,group size,small (<10),49,popularity,0.4694
+time_2024,group size,small (<10),49,three_hop_paths,0.3469
+time_2024,group size,small (<10),49,similar_groups,0.3061
+time_2024,group size,small (<10),49,deepwalk_cosine,0.4286
+time_2024,group size,medium (10-29),24,popularity,0.4583
+time_2024,group size,medium (10-29),24,three_hop_paths,0.5000
+time_2024,group size,medium (10-29),24,similar_groups,0.5000
+time_2024,group size,medium (10-29),24,deepwalk_cosine,0.3333
+time_2024,group size,large (30+),229,popularity,0.3144
+time_2024,group size,large (30+),229,three_hop_paths,0.2882
+time_2024,group size,large (30+),229,similar_groups,0.3100
+time_2024,group size,large (30+),229,deepwalk_cosine,0.2314
+time_2024,group size,all edges,302,popularity,0.3510
+time_2024,group size,all edges,302,three_hop_paths,0.3146
+time_2024,group size,all edges,302,similar_groups,0.3245
+time_2024,group size,all edges,302,deepwalk_cosine,0.2715
