@@ -1,0 +1,24 @@
+\begin{table*}[t]
+\centering
+\caption{Link prediction results. Random-split values are means over 5 seeds, time-split values are single runs. H@$k$ is hits@$k$. The best value in each column is in bold.}
+\label{tab:results}
+\small
+\begin{tabular}{lccccccccc}
+\toprule
+ & \multicolumn{3}{c}{Random split} & \multicolumn{3}{c}{Time split (2023)} & \multicolumn{3}{c}{Time split (2024)} \\
+\cmidrule(lr){2-4} \cmidrule(lr){5-7} \cmidrule(lr){8-10}
+Method & AUC & H@10 & H@50 & AUC & H@10 & H@50 & AUC & H@10 & H@50 \\
+\midrule
+Popularity & 0.859 & 0.260 & 0.584 & \textbf{0.725} & 0.113 & 0.266 & 0.731 & 0.118 & 0.292 \\
+Common Neighbors & 0.696 & 0.144 & 0.349 & 0.578 & 0.063 & 0.275 & 0.594 & 0.066 & 0.268 \\
+Jaccard & 0.689 & 0.065 & 0.293 & 0.576 & 0.051 & 0.217 & 0.591 & 0.105 & 0.212 \\
+Adamic-Adar & 0.698 & 0.151 & 0.362 & 0.578 & 0.040 & \textbf{0.277} & 0.594 & 0.033 & \textbf{0.307} \\
+3-hop paths & \textbf{0.898} & 0.288 & 0.602 & 0.681 & 0.117 & 0.256 & \textbf{0.755} & \textbf{0.159} & 0.268 \\
+Similar groups & 0.888 & \textbf{0.295} & \textbf{0.606} & 0.675 & 0.117 & 0.257 & 0.724 & \textbf{0.159} & 0.274 \\
+\midrule
+DeepWalk (cosine) & 0.849 & 0.199 & 0.490 & 0.655 & \textbf{0.141} & 0.267 & 0.751 & 0.148 & 0.268 \\
+DeepWalk (context) & 0.684 & 0.001 & 0.004 & 0.643 & 0.060 & 0.169 & 0.740 & 0.057 & 0.211 \\
+DeepWalk (classifier) & 0.638 & 0.008 & 0.071 & 0.492 & 0.035 & 0.100 & 0.561 & 0.000 & 0.076 \\
+\bottomrule
+\end{tabular}
+\end{table*}

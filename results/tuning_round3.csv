@@ -1,0 +1,13 @@
+dimension,window,walk_length,use_software,method,auc
+64,40,40,True,deepwalk_cosine,0.8067208023332302
+64,40,40,True,deepwalk_context,0.635347927035494
+64,40,40,True,deepwalk_classifier,0.6178847441947082
+64,40,40,False,deepwalk_cosine,0.7784324886086823
+64,40,40,False,deepwalk_context,0.4337448825425241
+64,40,40,False,deepwalk_classifier,0.6592794559801038
+64,40,80,True,deepwalk_cosine,0.8256167230851024
+64,40,80,True,deepwalk_context,0.6499846814185607
+64,40,80,True,deepwalk_classifier,0.6483206629641756
+64,40,80,False,deepwalk_cosine,0.81168882854903
+64,40,80,False,deepwalk_context,0.4353037734772278
+64,40,80,False,deepwalk_classifier,0.6639170814197622

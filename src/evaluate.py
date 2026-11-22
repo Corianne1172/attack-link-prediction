@@ -53,3 +53,19 @@ def compute_hits(score_function, context, split, seed):
     for k in HITS_K_VALUES:
         results[k] = hit_totals[k] / len(held_out_by_group)
     return results
+
+def evaluate_methods(split, context, score_functions):
+    # Scores every method on one split and returns one result row per method.
+    rows = []
+    for method_name, score_function in score_functions.items():
+        hits = compute_hits(score_function, context, split, 0)
+        row = {
+            "split": split["name"],
+            "method": method_name,
+            "auc": compute_auc(score_function, context, split),
+        }
+        for k in HITS_K_VALUES:
+            row["hits@" + str(k)] = hits[k]
+        rows.append(row)
+        print(split["name"], method_name, "done")
+    return rows

@@ -8,6 +8,7 @@ TEST_FRACTION = 0.2
 # The time split is run at each of these cutoffs. 2023 is the main one and 2024 is a robustness check.
 CUTOFF_YEARS = [2023, 2024]
 RANDOM_SEEDS = [0, 1, 2, 3, 4]
+VALIDATION_FRACTION = 0.15
 
 
 def load_nodes(file_path):
@@ -176,6 +177,37 @@ def print_split_summary(split):
     print("   negative pairs:", len(split["negative_pairs"]))
     print("   candidate groups:", len(split["group_ids"]))
     print("   candidate techniques:", len(split["technique_ids"]))
+    
+def make_validation_split(split, seed):
+    # Hides a fraction of a split's training edges to make a validation set for tuning.
+    group_technique_pairs = list(split["train_group_technique_pairs"])
+    random.Random(seed).shuffle(group_technique_pairs)
+    validation_count = int(len(group_technique_pairs) * VALIDATION_FRACTION)
+    validation_pairs = group_technique_pairs[:validation_count]
+    remaining_pairs = group_technique_pairs[validation_count:]
+
+    # The hidden validation edges must also leave the training graph, otherwise tuning would see them
+    validation_set = set(validation_pairs)
+    remaining_graph_pairs = []
+    for pair in split["train_graph_pairs"]:
+        if pair not in validation_set:
+            remaining_graph_pairs.append(pair)
+
+    # Negatives avoid every training edge, including the hidden validation edges
+    known_pairs = set(split["train_group_technique_pairs"])
+    negative_pairs = sample_negative_pairs(split["group_ids"], split["technique_ids"],
+                                           known_pairs, len(validation_pairs), seed)
+    # The original test set is never used here. The "test" slots hold the validation edges instead.
+    return {
+        "name": split["name"] + "_validation",
+        "train_graph_pairs": remaining_graph_pairs,
+        "train_group_technique_pairs": remaining_pairs,
+        "test_pairs": validation_pairs,
+        "cold_pairs": [],
+        "negative_pairs": negative_pairs,
+        "group_ids": split["group_ids"],
+        "technique_ids": split["technique_ids"],
+    }
     
 def build_all_splits(nodes, edges):
     # Builds every random split and every time split used in the project.
