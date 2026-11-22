@@ -224,3 +224,5 @@ __marimo__/
 
 .venv/
 data/
+
+.DS_Store
