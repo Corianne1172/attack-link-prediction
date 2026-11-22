@@ -176,16 +176,21 @@ def print_split_summary(split):
     print("   negative pairs:", len(split["negative_pairs"]))
     print("   candidate groups:", len(split["group_ids"]))
     print("   candidate techniques:", len(split["technique_ids"]))
-
-
-def main():
-    nodes = load_nodes(NODE_FILE)
-    edges = load_edges(EDGE_FILE)
+    
+def build_all_splits(nodes, edges):
+    # Builds every random split and every time split used in the project.
     splits = []
     for seed in RANDOM_SEEDS:
         splits.append(make_random_split(nodes, edges, seed))
     for cutoff_year in CUTOFF_YEARS:
         splits.append(make_time_split(nodes, edges, cutoff_year, 0))
+    return splits
+
+
+def main():
+    nodes = load_nodes(NODE_FILE)
+    edges = load_edges(EDGE_FILE)
+    splits = build_all_splits(nodes, edges)
     for split in splits:
         check_no_leakage(split)
         print_split_summary(split)
