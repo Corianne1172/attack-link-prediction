@@ -6,6 +6,7 @@ DATA_PATH = os.path.join("data", "raw", "enterprise-attack.json")
 NODE_FILE = os.path.join("data", "processed", "nodes.csv")
 EDGE_FILE = os.path.join("data", "processed", "edges.csv")
 
+# Maps the STIX object type to the kind of node we use in the graph
 NODE_KIND_BY_TYPE = {
     "intrusion-set": "group",
     "attack-pattern": "technique",
@@ -23,6 +24,7 @@ def load_objects(file_path):
 
 def is_active(stix_object):
     # Returns True if the object is not revoked or deprecated.
+    # Revoked and deprecated objects are outdated entries MITRE no longer stands behind
     if stix_object.get("revoked", False):
         return False
     if stix_object.get("x_mitre_deprecated", False):
@@ -32,6 +34,7 @@ def is_active(stix_object):
 
 def get_attack_id(stix_object):
     # Returns the ATT&CK ID of an object, such as T1059.001 or G0016.
+    # The readable ID is stored inside external_references, under the source "mitre-attack"
     for reference in stix_object.get("external_references", []):
         if reference.get("source_name") == "mitre-attack":
             return reference.get("external_id")
@@ -45,12 +48,14 @@ def collect_nodes(objects):
         if not is_active(stix_object):
             continue
         object_type = stix_object["type"]
+        # Skip every other STIX type (campaigns, detections, mitigations, and so on)
         if object_type not in NODE_KIND_BY_TYPE:
             continue
         nodes[stix_object["id"]] = {
             "attack_id": get_attack_id(stix_object),
             "name": stix_object["name"],
             "kind": NODE_KIND_BY_TYPE[object_type],
+            # The created date is needed later to tell which nodes exist at the time-split cutoff
             "created": stix_object["created"],
         }
     return nodes
@@ -73,12 +78,14 @@ def collect_edges(objects, nodes):
     for stix_object in objects:
         if stix_object["type"] != "relationship":
             continue
+        # Only "uses" relationships: they link groups, software and techniques
         if stix_object["relationship_type"] != "uses":
             continue
         if not is_active(stix_object):
             continue
         source_id = stix_object["source_ref"]
         target_id = stix_object["target_ref"]
+        # Skip edges that touch a node we dropped (revoked, deprecated, or a type we do not use, like campaigns)
         if source_id not in nodes or target_id not in nodes:
             continue
         edge_kind = get_edge_kind(nodes[source_id]["kind"], nodes[target_id]["kind"])
@@ -86,6 +93,8 @@ def collect_edges(objects, nodes):
             continue
         key = (source_id, target_id)
         created = stix_object["created"]
+        # The same pair can appear more than once. Keep the earliest date, because that is when
+        # it first became known, which is what the time split needs.
         if key not in edges or created < edges[key]["created"]:
             edges[key] = {"kind": edge_kind, "created": created}
     return edges
@@ -122,6 +131,7 @@ def print_summary(nodes, edges):
     year_counts = {}
     for info in edges.values():
         edge_counts[info["kind"]] = edge_counts.get(info["kind"], 0) + 1
+        # Only group-technique edges are broken down by year, because those are what we predict
         if info["kind"] == "group_technique":
             year = info["created"][:4]
             year_counts[year] = year_counts.get(year, 0) + 1
