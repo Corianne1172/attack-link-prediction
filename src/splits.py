@@ -5,8 +5,8 @@ import random
 NODE_FILE = os.path.join("data", "processed", "nodes.csv")
 EDGE_FILE = os.path.join("data", "processed", "edges.csv")
 TEST_FRACTION = 0.2
-# Edges created in this year or earlier are training data in the time split
-CUTOFF_YEAR = 2024
+# The time split is run at each of these cutoffs. 2023 is the main one and 2024 is a robustness check.
+CUTOFF_YEARS = [2023, 2024]
 RANDOM_SEEDS = [0, 1, 2, 3, 4]
 
 
@@ -184,7 +184,8 @@ def main():
     splits = []
     for seed in RANDOM_SEEDS:
         splits.append(make_random_split(nodes, edges, seed))
-    splits.append(make_time_split(nodes, edges, CUTOFF_YEAR, 0))
+    for cutoff_year in CUTOFF_YEARS:
+        splits.append(make_time_split(nodes, edges, cutoff_year, 0))
     for split in splits:
         check_no_leakage(split)
         print_split_summary(split)
